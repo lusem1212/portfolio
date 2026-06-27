@@ -1,0 +1,54 @@
+---
+// Services section
+const services = [
+  {
+    title: '住宅设计',
+    en: 'Residential',
+    description: '从平层到别墅，量身定制的居住空间方案。关注动线、收纳与情感体验。',
+  },
+  {
+    title: '商业空间',
+    en: 'Commercial',
+    description: '展厅、办公、零售空间设计，用空间语言传递品牌价值与商业逻辑。',
+  },
+  {
+    title: '软装陈设',
+    en: 'Furnishing',
+    description: '家具、灯具、艺术品选配与定制，赋予空间完整的氛围与温度。',
+  },
+  {
+    title: '设计顾问',
+    en: 'Consulting',
+    description: '项目定位、风格策划、成本控制，为业主提供全流程专业顾问服务。',
+  },
+];
+---
+
+<section data-section="services" class="section-container flex-col justify-center py-24 px-8 md:px-16 lg:px-24">
+  <div class="w-full mb-16">
+    <p class="text-xs tracking-widest uppercase text-subtle mb-4">What We Do</p>
+    <h2 class="font-display text-4xl md:text-5xl font-semibold tracking-tight">服务</h2>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 max-w-4xl w-full">
+    {services.map((service, i) => (
+      <div class="group">
+        <div class="flex items-baseline gap-3 mb-3">
+          <span class="text-[10px] tracking-widest uppercase text-subtle">{String(i + 1).padStart(2, '0')}</span>
+          <span class="text-xs tracking-widest uppercase gold-accent">{service.en}</span>
+        </div>
+        <h3 class="font-display text-2xl md:text-3xl font-medium mb-3">{service.title}</h3>
+        <p class="text-sm font-light leading-relaxed text-subtle max-w-sm">{service.description}</p>
+      </div>
+    ))}
+  </div>
+
+  <!-- Contact CTA -->
+  <div class="mt-24 text-center">
+    <p class="text-sm font-light text-subtle mb-6">有项目想聊聊？</p>
+    <a href="mailto:hello@lidesign.studio" data-hover class="inline-flex items-center gap-2 text-lg tracking-wider gold-accent hover:opacity-80 transition-opacity duration-300 font-display italic">
+      hello@lidesign.studio
+      <span class="text-sm">&rarr;</span>
+    </a>
+  </div>
+</section>
