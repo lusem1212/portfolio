@@ -5,11 +5,17 @@
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
-      // 主题初始化:默认浅色;localStorage 记忆用户选择(防刷新闪烁)
+      // 主题初始化:优先用户手动选择;否则按时间段自动(18:00-6:00 深色,6:00-18:00 浅色)
       (function () {
         try {
+          var manual = localStorage.getItem('lusem-theme-manual');
           var t = localStorage.getItem('lusem-theme');
-          if (t === 'dark') document.documentElement.dataset.theme = 'dark';
+          if (manual === '1' && t) {
+            document.documentElement.dataset.theme = t;
+          } else {
+            var h = new Date().getHours();
+            document.documentElement.dataset.theme = (h >= 18 || h < 6) ? 'dark' : 'light';
+          }
         } catch (e) {}
       })();
     </script>
@@ -29,7 +35,7 @@
       href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="./assets/main-CeaTaqw6.js"></script>
+    <script type="module" crossorigin src="./assets/main-BmlachR_.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-C_KILZCR.js">
     <link rel="stylesheet" crossorigin href="./assets/main-BjYPVjZQ.css">
   </head>
